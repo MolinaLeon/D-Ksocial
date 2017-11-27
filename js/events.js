@@ -5,6 +5,7 @@ $(document).ready(() => {
     const currentStudent = SDK.Student.currentStudent();
     const $eventList = $("#event-list");
 
+    //data istedet for events?
     SDK.Event.getEvents((err, events) => {
         events.forEach((event => {
 
@@ -42,16 +43,14 @@ $(document).ready(() => {
         </div>`;
 
             $eventList.append(eventHtml);
-    });
+    }),
 
         $(".join-button").click(function() {
             const idEvent = $(this).data("idEvent");
             const event = events.find((event) => event.id === idEvent);
             SDK.Event.joinEvent(event);
-
         });
     });
-});
 
 });
 

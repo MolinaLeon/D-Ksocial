@@ -35,6 +35,25 @@ const SDK = {
 
     Student: {
 
+        register: (regFirstName, regLastName, regMail, regPassword, regVerifyPassword, cb ) => {
+            SDK.request({
+                data: {
+                    firstName: regFirstName,
+                    lastName: regLastName,
+                    email: regMail,
+                    password: regPassword,
+                    verifyPassword: regVerifyPassword
+                },
+                url: "/register",
+                method: "POST"
+                }, (err, data) => {
+                    if (err) {
+                        return cb(err);
+                    }
+                    cb(null, data);
+                });
+        },
+
         currentStudent: () => {
             return SDK.Storage.load("token");
         },
