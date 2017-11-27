@@ -2,17 +2,22 @@ const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, cb) => {
 
+        /* Bruges umiddelbart ikke grundet sessionStorage
         let headers = {};
         if (options.headers) {
             Object.keys(options.headers).forEach((h) => {
                 headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
             });
         }
+*/
+        let token = {
+            "Authorization": SDK.Storage.load("token")
+        };
 
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
-            headers: headers,
+            headers: token,
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(options.data),
@@ -31,11 +36,10 @@ const SDK = {
     Student: {
 
         currentStudent: () => {
-            return SDK.Storage.load("currentStudent");
+            return SDK.Storage.load("token");
         },
         logOut: () => {
             SDK.Storage.remove("token");
-
             window.location.href = "index.html";
         },
         login: (email, password, cb) => {
@@ -51,7 +55,7 @@ const SDK = {
                 //On login-error
                 if (err) return cb(err);
 
-                SDK.Storage.persist("token", data.token);
+                SDK.Storage.persist("token", data);
 
                 cb(null, data);
 
