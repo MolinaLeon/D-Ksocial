@@ -12,11 +12,27 @@
 
 
 <div class="container">
-
     <div class="row" id="nav-container"></div>
 
-    <ul id="event-list"></ul>
+    <div class="table" id="event-list"> </div>
+</div>
 
+
+<div id="attStudentsModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Se deltagere</h5>
+        </div>
+            <div class="modal-body" id="attButton">
+    </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="closeModal" data-dismiss="modal">Luk</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <footer class="footer">
@@ -28,7 +44,7 @@
 <script src="lib/js/jquery-3.2.1.js"></script>
 <script src="lib/js/bootstrap.js"></script>
 <script src="js/sdk.js"></script>
-    <script src="js/events.js"></script>
+<script src="js/events.js"></script>
 <script>
     SDK.Student.loadNav();
 </script>

@@ -147,9 +147,15 @@ const SDK = {
                     method: "GET",
                     url: "/events",
                     headers: {
-                        authorization: SDK.Storage.load("token")
+                        authorization: SDK.Storage.load("token"),
+                        filter: {
+                            include: ["events"]
+                        }
                     }
-                }, cb);
+                }, (err, data) => {
+                    if (err) return cb(err);
+                    cb(null, data);
+            });
             },
 
             joinEvent: (cb) => {
@@ -162,9 +168,12 @@ const SDK = {
                 }, cb)
             },
 
-
-
-
+            getAttStudents: (idEvent, cb) => {
+                SDK.request({
+                    method: "GET",
+                    url: "/events/" + idEvent + "/students",
+                }, cb);
+            },
         },
 
 

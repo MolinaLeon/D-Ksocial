@@ -16,8 +16,7 @@ $(document).ready(() => {
                     if (err && err.xhr.status === 400) {
                         $(".form-group").addClass("has-error");
                     } else {
-                        console.log(SDK.Student.register(regFirstName));
-                        alert("Du er nu oprettet som: " + firstName + "\nDin mail er dit brugernavn");
+                        alert("Du er nu oprettet som: " + firstName + "\nDin mail, " + email + ", er dit brugernavn");
                         window.location.href = "login.html";
                     }
                 });

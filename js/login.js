@@ -7,7 +7,7 @@ $(document).ready(() => {
 
         SDK.Student.login(email, password, (err, data) => {
             if (err && err.xhr.status === 401) {
-                $(".login-button").addClass("has-error");
+                $(".login-button").addClass("Error - 401");
             }
             else if (err) {
                 console.log(err)
