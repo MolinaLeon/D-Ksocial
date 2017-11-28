@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    $("#registerStudent".click(() => {
+    $("#createUser-button").click(() => {
 
         const firstName = $("#regFirstName").val();
         const lastName = $("#regLastName").val();
@@ -9,14 +9,14 @@ $(document).ready(() => {
         const verifyPassword = $("#regVerifyPassword");
 
         if (!firstName || !lastName || !email || !password || !verifyPassword) {
-            Window.alert("Alle felter skal udfyldes")
+            alert("Alle felter skal udfyldes")
         } else {
-            if (password.valueOf() === verifyPassword.valueOf()) {
-                SDK.Student.register(regfFirstName, regLastName, regMail, regPassword, regVerifyPassword, (err, data) => {
+            if (password === verifyPassword) {
+                SDK.Student.register(regFirstName, regLastName, regMail, regPassword, regVerifyPassword, (err, data) => {
                     if (err && err.xhr.status === 400) {
-                        $(".form-group").addClass("Fejl fra klient - 400");
+                        $(".form-group").addClass("has-error");
                     } else {
-                        window.alert("Du er nu oprettet som: " + firstName + "\nDin mail er dit brugernavn");
+                        alert("Du er nu oprettet som: " + firstName + "\nDin mail er dit brugernavn");
                         window.location.href = "login.html";
                     }
                 });

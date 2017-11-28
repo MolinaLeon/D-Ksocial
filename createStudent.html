@@ -16,11 +16,33 @@
     <div class="row" id="nav-container"></div>
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="jumbotron">
-                <h1 class="display-3">DØKsocial</h1>
-
+        <div class="col-lg-6">
+            <div class="page-header">
+                <h1>Opret bruger</h1>
+                <div id="load-test"></div>
             </div>
+            <div class="form-group">
+                <label class="control-label" for="regFirstName">Fornavn</label>
+                <input type="text" class="form-control" id="regFirstName" placeholder="Fornavn">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regLastName">Efternavn</label>
+                <input type="text" class="form-control" id="regLastName" placeholder="Efternavn">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regMail">Email</label>
+                <input type="email" class="form-control" id="regMail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regPassword">Password</label>
+                <input type="password" class="form-control" id="regPassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regVerifyPassword">Indtast password igen</label>
+                <input type="password" class="form-control" id="regVerifyPassword" placeholder="Password">
+            </div>
+            <button type="button" style="margin-bottom: 40px" class="btn btn-default" id="createUser-button">Opret bruger</button>
+            <button type="button" style="margin-bottom: 40px" class="btn btn-default" id="back-button">Tilbage</button>
         </div>
     </div>
 

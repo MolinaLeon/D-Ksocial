@@ -8,8 +8,6 @@ $(document).ready(() => {
 
     $(".profile-info").html(`
     <dl>
-        <dt>Navn</dt>
-        <dd>${currentStudent.firstName} ${currentStudent.lastName}</dd>
         <dt>Email</dt>
         <dd>${currentStudent.email}</dd>
      </dl>

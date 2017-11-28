@@ -11,7 +11,7 @@ const SDK = {
         }
 */
         let token = {
-            "Authorization": SDK.Storage.load("token")
+            "authorization": SDK.Storage.load("token")
         };
 
         $.ajax({
@@ -57,9 +57,16 @@ const SDK = {
         currentStudent: () => {
             return SDK.Storage.load("token");
         },
-        logOut: () => {
-            SDK.Storage.remove("token");
-            window.location.href = "index.html";
+        logOut: (cb) => {
+            SDK.request({
+                method: "POST",
+                url: "/students/logout",
+            }, (err, data) => {
+                if (err) {
+                   return cb(err);
+                }
+                cb(null, data);
+            });
         },
         login: (email, password, cb) => {
             SDK.request({
@@ -79,8 +86,22 @@ const SDK = {
                 cb(null, data);
 
             });
+        },
 
-
+            getCurrentStudent: (cb) => {
+                SDK.request({
+                    method: "GET",
+                    url: "/students/profile",
+                    headers: {
+                        authorization: SDK.Storage.load("token"),
+                    },
+                }, (err, data) => {
+                    if (err) {
+                        return cb(err);
+                    }
+                    cb(null, data);
+                    SDK.Storage.persist("student", data);
+                });
         },
 
         loadNav: (cb) => {
@@ -102,7 +123,18 @@ const SDK = {
             <li><a href="createStudent.html">Opret bruger</a></li>
           `);
                 }
-                $("#logout-link").click(() => SDK.Student.logOut());
+                $("#logout-link").click(() => {
+                    SDK.Student.logOut((err, data) => {
+                        if (err & err.xhr.status === 401) {
+                            $(".form-group").addClass("has-error");
+                        } else {
+                            SDK.Storage.remove("token");
+                            SDK.Storage.remove("student");
+                            window.location.href = "index.html";
+                        }
+                    });
+
+                });
                 cb && cb();
             });
         }

@@ -12,7 +12,14 @@ $(document).ready(() => {
             else if (err) {
                 console.log(err)
             } else {
-                window.location.href = "firstPage.html";
+                SDK.Student.getCurrentStudent((err,data) => {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            window.location.href = "firstPage.html";
+                        }
+                    }
+                );
             }
         });
 
