@@ -100,7 +100,7 @@ const SDK = {
                         return cb(err);
                     }
                     cb(null, data);
-                    SDK.Storage.persist("student", data);
+                    SDK.Storage.persist("Student", data);
                 });
         },
 
