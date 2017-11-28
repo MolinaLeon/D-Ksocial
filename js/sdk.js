@@ -2,7 +2,7 @@ const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, cb) => {
 
-        /* Bruges umiddelbart ikke grundet sessionStorage
+        /* Bruges umiddelbart ikke grundet anden storage metode
         let headers = {};
         if (options.headers) {
             Object.keys(options.headers).forEach((h) => {
@@ -88,6 +88,7 @@ const SDK = {
                 const currentStudent = SDK.Student.currentStudent();
                 if (currentStudent) {
                     $(".navbar-right").html(`
+            <li><a href="firstPage.html">Profil</a></li>
             <li><a href="events.html">Alle events</a></li>
             <li><a href="yourEvents.html">Dine events</a></li>
             <li><a href="createEvent.html">Opret event</a></li>
@@ -98,6 +99,7 @@ const SDK = {
                 } else {
                     $(".navbar-right").html(`
             <li><a href="login.html">Log ind <span class="sr-only">(currentStudent)</span></a></li>
+            <li><a href="createStudent.html">Opret bruger</a></li>
           `);
                 }
                 $("#logout-link").click(() => SDK.Student.logOut());
