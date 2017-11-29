@@ -8,7 +8,7 @@ $(document).ready(() => {
     SDK.Event.getEvents((err, data) => {
         data = JSON.parse(data);
 
-        data.forEach((data) => {
+        data.forEach((event) => {
 
             let eventHtml = `
 <div class="container">
@@ -26,25 +26,25 @@ $(document).ready(() => {
         
         <tbody>
         <tr>
-        <td>${data.eventName}</td>
-        <td>${data.owner}</td>
-        <td>${data.location}</td>
-        <td>${data.price}</td>
-        <td>${data.eventDate}</td>
-        <td>${data.description}</td>
-        <td><button id="joinEvent-button" class="btn btn-default" data-data-id="${data.idEvent}">Deltage i begivenhed</button></td>
-        <td><button id="attButton" class="btn btn-default" data-data-id="${data.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
+        <td>${event.eventName}</td>
+        <td>${event.owner}</td>
+        <td>${event.location}</td>
+        <td>${event.price}</td>
+        <td>${event.eventDate}</td>
+        <td>${event.description}</td>
+        <td><button id="joinEvent-button" class="btn btn-default" data-event-id="${event.idEvent}">Deltage i begivenhed</button></td>
+        <td><button id="attButton" class="btn btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
         </tr>
         </tbody>
     </table>                    
 </div> `;
         $eventList.append(eventHtml);
-    }),
+    });
 
         $(".joinEvent-button").click(function() {
-            const idEvent = $(this).data("data-id");
-            const event = data.find((data) => data.idEvent === idEvent);
-            SDK.Event.joinEvent(idEvent, data.eventName, data.owner, data.location, data.price, data.eventDate, data.description, (err,data) => {
+            const idEvent = $(this).data("event-id");
+            const event = data.find((event) => event.idEvent === idEvent);
+            SDK.Event.joinEvent(idEvent, event.eventName, event.owner, event.location, event.price, event.eventDate, event.description, (err,data) => {
                 if (err && xhr.status === 401) {
                     $(".form-group").addClass("Error - 401");
                 }
@@ -56,7 +56,7 @@ $(document).ready(() => {
         });
     });
         $(".seeAtt-button").click(function () {
-            var idEvent = $(this).data("data-id");
+            var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
                     students = JSON.parse(students);

@@ -11,7 +11,7 @@ const SDK = {
         }
 */
         let token = {
-            "authorization": SDK.Storage.load("token")
+            "Authorization": SDK.Storage.load("token")
         };
 
         $.ajax({
@@ -93,14 +93,14 @@ const SDK = {
                     method: "GET",
                     url: "/students/profile",
                     headers: {
-                        authorization: SDK.Storage.load("token"),
+                        Authorization: SDK.Storage.load("token"),
                     },
                 }, (err, data) => {
                     if (err) {
                         return cb(err);
                     }
-                    cb(null, data);
                     SDK.Storage.persist("Student", data);
+                    cb(null, data);
                 });
         },
 
@@ -147,7 +147,7 @@ const SDK = {
                     method: "GET",
                     url: "/events",
                     headers: {
-                        authorization: SDK.Storage.load("token"),
+                        Authorization: SDK.Storage.load("token"),
                         filter: {
                             include: ["events"]
                         }
@@ -163,7 +163,7 @@ const SDK = {
                     method: "POST",
                     url: "/events/join",
                     headers:{
-                        authorization: SDK.Storage.load("token")
+                        Authorization: SDK.Storage.load("token")
                     }
                 }, cb)
             },
@@ -174,6 +174,23 @@ const SDK = {
                     url: "/events/" + idEvent + "/students",
                 }, cb);
             },
+
+            createEvent: (regEventName, regEventLocation, regEventDate, regEventPrice, regEventDescription, cb) => {
+                SDK.request({
+                    method: "POST",
+                    url: "/events",
+                    data: {
+                        eventName: regEventName,
+                        location: regEventLocation,
+                        eventDate: regEventDate,
+                        price: regEventPrice,
+                        description: regEventDescription,
+                    },
+                    headers:{
+                        Authorization: SDK.Storage.load("token")
+                            }
+                    }, cb);
+            }
         },
 
 

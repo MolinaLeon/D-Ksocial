@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
 
     <meta charset="UTF-8">
-    <title>DØKsocial</title>
+    <title>Opret bruger - DØKsocial</title>
 </head>
 <body>
 
@@ -16,29 +16,52 @@
     <div class="row" id="nav-container"></div>
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="jumbotron">
-                <h1 class="display-3">Opret event</h1>
-
+        <div class="col-lg-6">
+            <div class="page-header">
+                <h1>Opret begivenhed</h1>
+                <div id="load-test"></div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regEventName">Begivenhedens navn</label>
+                <input type="text" class="form-control" id="regEventName" placeholder="Begivenhedens navn">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regEventLocation">Placering</label>
+                <input type="text" class="form-control" id="regEventLocation" placeholder="Placering">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regEventDate">Dato</label>
+                <input type="text" class="form-control" id="regEventDate" placeholder="Dato">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regEventPrice">Pris</label>
+                <input type="text" class="form-control" id="regEventPrice" placeholder="Pris">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="regEventDescription">Beskrivelse</label>
+                <input type="text" class="form-control" id="regEventDescription" placeholder="Beskrivelse">
+            </div>
+            <button type="button" style="margin-bottom: 40px" class="btn btn-default" id="createEvent-button">Opret begivenhed</button>
 
         </div>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">2017 © All rights reserved - DØKsocial</p>
-    </div>
-</footer>
 
-<script src="lib/js/jquery-3.2.1.js"></script>
-<script src="lib/js/bootstrap.js"></script>
-<script src="js/sdk.js"></script>
-<script>
-    SDK.Student.loadNav();
-</script>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">2017 © All rights reserved - DØKsocial</p>
+        </div>
+    </footer>
 
 
 
+    <script src="lib/js/jquery-3.2.1.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="js/sdk.js"></script>
+    <script src="js/createEvent.js"></script>
+    <script>
+        SDK.Student.loadNav();
+    </script>
 </body>
 </html>
