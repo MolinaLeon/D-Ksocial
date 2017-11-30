@@ -110,11 +110,11 @@ const SDK = {
                 if (currentStudent) {
                     $(".navbar-right").html(`
             <li><a href="firstPage.html">Profil</a></li>
-            <li><a href="events.html">Alle events</a></li>
-            <li><a href="yourEvents.html">Dine events</a></li>
-            <li><a href="createEvent.html">Opret event</a></li>
-            <li><a href="yourEvents.html">Event deltagere</a></li>
-            <li><a href="updateEvents.html">Opdater event</a></li>
+            <li><a href="events.html">Alle begivenheder</a></li>
+            <li><a href="myEvents.html">Dine begivenheder</a></li>
+            <li><a href="createEvent.html">Opret begivenhed</a></li>
+            <li><a href="attStudents.html">Deltagere</a></li>
+            <li><a href="updateEvent.html">Opdater begivenhed</a></li>
             <li><a href="#" id="logout-link">Logout</a></li>
           `);
                 } else {
@@ -190,6 +190,32 @@ const SDK = {
                         Authorization: SDK.Storage.load("token")
                             }
                     }, cb);
+            },
+
+            myEvents: (cb) => {
+                SDK.request({
+                    method: "GET",
+                    url: "/events/myEvents",
+                    headers:{
+                        Authorization: SDK.Storage.load("token")
+                    }
+
+                }, cb)
+            },
+
+            deleteEvent: (idEvent, price, eventName, location, description, eventDate, cb) => {
+                SDK.request({
+                    method: "PUT",
+                    url: "/events/" + idEvent + "/delete-event",
+                    data:{
+                        idEvent: delIdEvent,
+                        price: delPrice,
+                        eventName: delEventName,
+                        location: delLocation,
+                        description: delDescription,
+                        eventDate: delEventDate
+                    },
+                }, cb)
             }
         },
 

@@ -1,6 +1,5 @@
 $(document).ready(() => {
 
-    SDK.Student.loadNav();
     const currentStudent = SDK.Student.currentStudent();
     const $attButton = $("#attButton");
     const $eventList = $("#event-list");
@@ -51,7 +50,7 @@ $(document).ready(() => {
                 else if (err) {
                     alert("Kunne ikke deltage i begivenhed");
                 } else {
-                    window.location.href = "yourEvents.html";
+                    window.location.href = "../myEvents.html";
                 }
         });
     });

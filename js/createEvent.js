@@ -19,7 +19,7 @@ $(document).ready(() => {
                 } else {
                     console.log(err)
                     alert("Du har nu opretter begivenheden: " + eventName);
-                    window.location.href = "yourEvents.html"
+                    window.location.href = "../myEvents.html"
                 }
             });
         });

@@ -18,9 +18,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="jumbotron">
-                <h1 class="display-3">Dine events</h1>
+                <h1 class="display-3">Dine begivenheder</h1>
 
-                Oversigt over egne events med "Delete"-knap
+                <div class="row" id="myEvents"> </div>
+
+
+                <div class="row" id="emptyEvents">
+                    <h1 class="display-4">Ingen begivenheder oprettet</h1>
+                </div>
 
         </div>
     </div>
@@ -35,6 +40,7 @@
 <script src="lib/js/jquery-3.2.1.js"></script>
 <script src="lib/js/bootstrap.js"></script>
 <script src="js/sdk.js"></script>
+    <script src="js/myEvents.js"></script>
 <script>
     SDK.Student.loadNav();
 </script>
