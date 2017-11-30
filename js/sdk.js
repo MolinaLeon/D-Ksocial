@@ -175,16 +175,16 @@ const SDK = {
                 }, cb);
             },
 
-            createEvent: (regEventName, regEventLocation, regEventDate, regEventPrice, regEventDescription, cb) => {
+            createEvent: (regEventPrice, regEventName, regEventLocation, regEventDescription, regEventDate, cb) => {
                 SDK.request({
                     method: "POST",
                     url: "/events",
                     data: {
+                        price: regEventPrice,
                         eventName: regEventName,
                         location: regEventLocation,
-                        eventDate: regEventDate,
-                        price: regEventPrice,
                         description: regEventDescription,
+                        eventDate: regEventDate,
                     },
                     headers:{
                         Authorization: SDK.Storage.load("token")
