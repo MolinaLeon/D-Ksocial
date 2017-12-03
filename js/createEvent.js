@@ -18,8 +18,8 @@ $(document).ready(() => {
                     console.log(err)
                 } else {
                     console.log(err)
-                    alert("Du har nu opretter begivenheden: " + eventName);
-                    window.location.href = "../myEvents.html"
+                    alert("Du har nu oprettet begivenheden: " + eventName);
+                    window.location.href = "myEvents.html"
                 }
             });
         });
