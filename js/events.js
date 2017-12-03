@@ -1,6 +1,7 @@
 $(document).ready(() => {
 
     const currentStudent = SDK.Student.currentStudent();
+    const $joinEventButton = $("#joinEventButton");
     const $attButton = $("#attButton");
     const $eventList = $("#event-list");
 
@@ -31,7 +32,7 @@ $(document).ready(() => {
         <td>${event.price}</td>
         <td>${event.eventDate}</td>
         <td>${event.description}</td>
-        <td><button id="joinEvent-button" class="btn btn-default" data-event-id="${event.idEvent}">Deltage i begivenhed</button></td>
+        <td><button id="joinEventButton" class="btn btn-default" data-event-id="${event.idEvent}">Deltage i begivenhed</button></td>
         <td><button id="attButton" class="btn btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
         </tr>
         </tbody>
@@ -40,7 +41,7 @@ $(document).ready(() => {
         $eventList.append(eventHtml);
     });
 
-        $(".joinEvent-button").click(function() {
+        $(".joinEventButton").click(function() {
             const idEvent = $(this).data("event-id");
             const event = data.find((event) => event.idEvent === idEvent);
             SDK.Event.joinEvent(idEvent, event.eventName, event.owner, event.location, event.price, event.eventDate, event.description, (err,data) => {
@@ -50,11 +51,11 @@ $(document).ready(() => {
                 else if (err) {
                     alert("Kunne ikke deltage i begivenhed");
                 } else {
-                    window.location.href = "../myEvents.html";
+                    window.location.href = "myEvents.html";
                 }
         });
     });
-        $(".seeAtt-button").click(function () {
+        $(".attButton").click(function () {
             var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
