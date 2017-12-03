@@ -2,7 +2,6 @@ $(document).ready(() => {
 
     const currentStudent = SDK.Student.currentStudent();
     const $joinEventButton = $("#joinEventButton");
-    const $attButton = $("#attButton");
     const $eventList = $("#event-list");
 
     SDK.Event.getEvents((err, data) => {
@@ -21,7 +20,7 @@ $(document).ready(() => {
         <th>Dato</th>
         <th>Beskrivelse</th>
         <th>Deltag</th>
-        <th>Se deltagende</th>
+        <th>Se deltagere</th>
         </tr>
         
         <tbody>
@@ -32,7 +31,7 @@ $(document).ready(() => {
         <td>${event.price}</td>
         <td>${event.eventDate}</td>
         <td>${event.description}</td>
-        <td><button id="joinEventButton" class="btn btn-default" data-event-id="${event.idEvent}">Deltage i begivenhed</button></td>
+        <td><button class="btn btn-default joinEventButton" data-event-id="${event.idEvent}">Deltag i begivenhed</button></td>
         <td><button id="attButton" class="btn btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
         </tr>
         </tbody>
@@ -55,15 +54,28 @@ $(document).ready(() => {
                 }
         });
     });
-        $(".attButton").click(function () {
+        $("#attButton").click(() => {
             var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
                     students = JSON.parse(students);
+
                     students.forEach((student) => {
+
                         const attStudentsHtml = `
-                        <td>${student.firstName} ${student.lastName}</td>
-                        `;
+                        <table class="table">
+                            <thead>
+                            <th>Fornavn</th>
+                            <th>Efternavn</th>
+                        </thead>
+                            
+                        <tbody>
+                            <tr>       
+                            <td>${student.firstName} ${student.lastName}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                         `;
                         $attButton.append(attStudentsHtml)
                     });
                 } else {

@@ -142,12 +142,11 @@ const SDK = {
 
 
         Event: {
-            getEvents: (cb) => {
+            getEvents: (cb, events) => {
                 SDK.request({
                     method: "GET",
                     url: "/events",
                     headers: {
-                        Authorization: SDK.Storage.load("token"),
                         filter: {
                             include: ["events"]
                         }
@@ -158,8 +157,15 @@ const SDK = {
             });
             },
 
-            joinEvent: (cb) => {
+            joinEvent: (idEvent, eventName, location, price, eventDate, description, cb) => {
                 SDK.request({
+                    data: {
+                        idEvent: idEvent,
+                        eventName: eventName,
+                        location: location,
+                        price: price,
+                        description
+                    },
                     method: "POST",
                     url: "/events/join",
                     headers:{
@@ -203,17 +209,17 @@ const SDK = {
                 }, cb)
             },
 
-            deleteEvent: (idEvent, price, eventName, location, description, eventDate, cb) => {
+            deleteEvent: (idEvent, eventName, location, price, eventDate, description, cb) => {
                 SDK.request({
                     method: "PUT",
                     url: "/events/" + idEvent + "/delete-event",
                     data:{
-                        idEvent: delIdEvent,
-                        price: delPrice,
-                        eventName: delEventName,
-                        location: delLocation,
-                        description: delDescription,
-                        eventDate: delEventDate
+                        dEvent: idEvent,
+                        eventName: eventName,
+                        location: location,
+                        price: price,
+                        eventDate: eventDate,
+                        description: description,
                     },
                 }, cb)
             }

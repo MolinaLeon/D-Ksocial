@@ -1,21 +1,20 @@
 $(document).ready(() => {
 
-    const $myEvents = $("#myEvents");
-    const $emptyEvents = $("#emptyEvents");
-    const $deleteButton = $("#deleteButton");
-    const $updateButton = $("#updateButton");
+    let $myEvents = $("#myEvents");
+    let $emptyEvents = $("#emptyEvents");
+    let $updateButton = $("#updateButton");
     $emptyEvents.hide();
 
-    SDK.Event.myEvents((err, data) => {
-        data = JSON.parse(data);
+    SDK.Event.myEvents((err, events) => {
+        events = JSON.parse(events);
 
-        if (data.length === 0) {
+        if (events.length === 0) {
             $emptyEvents.show();
         }
 
-        data.forEach((event) => {
+        events.forEach((event) => {
 
-            let myEventsHtml = `
+            const myEventsHtml = `
 <div class="container">
 
     <table class="table">
@@ -48,11 +47,11 @@ $(document).ready(() => {
             $myEvents.append(myEventsHtml);
         });
 
-        $(".deleteButton").click(function () {
-            let idEvent = $(this).data("id-delete");
-            let event = event.find((event) => event.idEvent === idEvent);
+        $("#deleteButton").click(() => {
+            const idEvent = $(this).data("id-delete");
+            const event = events.find((event) => event.idEvent === idEvent);
 
-            SDK.Event.deleteEvent(idEvent, event.price, event.eventDate, event.location, event.description, event.eventDate, (err, data) => {
+            SDK.Event.deleteEvent(idEvent, event.eventName, event.location, event.price, event.eventDate, event.description, (err, data) => {
                 if (err && err.xhr.status === 401) {
                     $(".form-group").addClass("Error - 401")
                 }
