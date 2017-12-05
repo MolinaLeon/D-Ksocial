@@ -1,8 +1,8 @@
 $(document).ready(() => {
 
-    let $myEvents = $("#myEvents");
-    let $emptyEvents = $("#emptyEvents");
-    let $updateButton = $("#updateButton");
+    const $myEvents = $("#myEvents");
+    const $emptyEvents = $("#emptyEvents");
+    const $updateButton = $("#updateButton");
     $emptyEvents.hide();
 
     SDK.Event.myEvents((err, events) => {
@@ -44,7 +44,7 @@ $(document).ready(() => {
         </tbody>
     </table>
 </div> `;
-            $myEvents.append(myEventsHtml);
+            $("#myEvents").append(myEventsHtml);
         });
 
         $(".deleteButton").click(function () {
