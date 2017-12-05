@@ -1,7 +1,5 @@
 $(document).ready(() => {
 
-    const currentStudent = SDK.Student.currentStudent();
-    const $joinEventButton = $("#joinEventButton");
     const $eventList = $("#event-list");
 
     SDK.Event.getEvents((err, data) => {
@@ -32,7 +30,7 @@ $(document).ready(() => {
         <td>${event.eventDate}</td>
         <td>${event.description}</td>
         <td><button class="btn btn-default joinEventButton" data-event-id="${event.idEvent}">Deltag i begivenhed</button></td>
-        <td><button id="attButton" class="btn btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
+        <td><button class="btn attButton btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
         </tr>
         </tbody>
     </table>                    
@@ -54,7 +52,8 @@ $(document).ready(() => {
                 }
         });
     });
-        $("#attButton").click(() => {
+        $(".attButton").click(function () {
+            console.log("btn click");
             var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
@@ -76,7 +75,7 @@ $(document).ready(() => {
                         </tbody>
                         </table>
                          `;
-                        $attButton.append(attStudentsHtml)
+                        $("#attList").append(attStudentsHtml)
                     });
                 } else {
                 $("#attButton").html("Fejl, prøv igen");
@@ -87,7 +86,7 @@ $(document).ready(() => {
 
         });
 $("#closeModal").click(function () {
-    $("#attButton").html("");
+    //$("#attButton").html("");
 });
 });
 

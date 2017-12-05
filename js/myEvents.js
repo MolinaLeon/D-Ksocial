@@ -38,7 +38,7 @@ $(document).ready(() => {
             <td>${event.location}</td>
             <td>${event.eventDate}</td>
             <td>${event.price}</td>
-            <td><button id="deleteButton" class="btn btn-default" data-id-delete="${event.idEvent}">Slet Begivenhed</button></td>
+            <td><button class="btn deleteButton btn-default" data-id-delete="${event.idEvent}">Slet Begivenhed</button></td>
             <td> <a href="updateEvent.html?eventId=${event.idEvent}"<button id="updateButton" class="btn btn-default">Opdater begivenhed</button></a></td>
             </tr>
         </tbody>
@@ -47,7 +47,7 @@ $(document).ready(() => {
             $myEvents.append(myEventsHtml);
         });
 
-        $("#deleteButton").click(() => {
+        $(".deleteButton").click(function () {
             const idEvent = $(this).data("id-delete");
             const event = events.find((event) => event.idEvent === idEvent);
 
@@ -58,6 +58,7 @@ $(document).ready(() => {
                 else if (err) {
                     window.alert("Kunne ikke slettes - prøv igen")
                 } else {
+                    console.log(idEvent)
                     window.location.href = "myEvents.html";
                 }
             });
