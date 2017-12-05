@@ -1,6 +1,8 @@
 $(document).ready(() => {
 
     const $eventList = $("#event-list");
+    const $attButton = $("#attButton");
+    let $attList = $("#attList");
 
     SDK.Event.getEvents((err, data) => {
         data = JSON.parse(data);
@@ -12,7 +14,6 @@ $(document).ready(() => {
     <table class="table">
         <tr>
         <th>Navn</th>
-        <th>Ejer</th>
         <th>Lokation</th>
         <th>Pris</th>
         <th>Dato</th>
@@ -24,12 +25,11 @@ $(document).ready(() => {
         <tbody>
         <tr>
         <td>${event.eventName}</td>
-        <td>${event.owner}</td>
         <td>${event.location}</td>
         <td>${event.price}</td>
         <td>${event.eventDate}</td>
         <td>${event.description}</td>
-        <td><button class="btn btn-default joinEventButton" data-event-id="${event.idEvent}">Deltag i begivenhed</button></td>
+        <td><button class="btn joinEventButton btn-default" data-event-id="${event.idEvent}">Deltag i begivenhed</button></td>
         <td><button class="btn attButton btn-default" data-event-id="${event.idEvent}" data-toggle="modal" data-target="#attStudents-modal">Se deltagere</button> </td>        
         </tr>
         </tbody>
@@ -41,11 +41,13 @@ $(document).ready(() => {
         $(".joinEventButton").click(function() {
             const idEvent = $(this).data("event-id");
             const event = data.find((event) => event.idEvent === idEvent);
-            SDK.Event.joinEvent(idEvent, event.eventName, event.owner, event.location, event.price, event.eventDate, event.description, (err,data) => {
-                if (err && xhr.status === 401) {
+            console.log(idEvent);
+            SDK.Event.joinEvent(idEvent, event.eventName, event.location, event.price, event.eventDate, event.description, (err, data) => {
+                if (err && err.xhr.status === 401) {
                     $(".form-group").addClass("Error - 401");
                 }
                 else if (err) {
+                    console.log(err.message);
                     alert("Kunne ikke deltage i begivenhed");
                 } else {
                     window.location.href = "myEvents.html";
@@ -53,7 +55,6 @@ $(document).ready(() => {
         });
     });
         $(".attButton").click(function () {
-            console.log("btn click");
             var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
@@ -86,7 +87,7 @@ $(document).ready(() => {
 
         });
 $("#closeModal").click(function () {
-    //$("#attButton").html("");
+    $("#attButton").html("");
 });
 });
 

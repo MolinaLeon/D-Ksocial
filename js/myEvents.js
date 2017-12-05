@@ -58,7 +58,6 @@ $(document).ready(() => {
                 else if (err) {
                     window.alert("Kunne ikke slettes - prøv igen")
                 } else {
-                    console.log(idEvent)
                     window.location.href = "myEvents.html";
                 }
             });

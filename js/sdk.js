@@ -111,7 +111,7 @@ const SDK = {
                     $(".navbar-right").html(`
             <li><a href="firstPage.html">Profil</a></li>
             <li><a href="events.html">Alle begivenheder</a></li>
-            <li><a href="myEvents.html">Dine begivenheder</a></li>
+            <li><a href="myEvents.html">Mine begivenheder</a></li>
             <li><a href="createEvent.html">Opret begivenhed</a></li>
             <li><a href="attStudents.html">Deltagere</a></li>
             <li><a href="updateEvent.html">Opdater begivenhed</a></li>
@@ -164,14 +164,16 @@ const SDK = {
                         eventName: eventName,
                         location: location,
                         price: price,
-                        description
+                        description: description,
                     },
                     method: "POST",
                     url: "/events/join",
-                    headers:{
-                        Authorization: SDK.Storage.load("token")
-                    }
-                }, cb)
+                    authorization: SDK.Storage.load("token"),
+                },(err, data) => {
+                    if(err)
+                        return cb(err);
+                    cb(null, data);
+                });
             },
 
             getAttStudents: (idEvent, cb) => {
