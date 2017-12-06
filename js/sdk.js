@@ -179,7 +179,7 @@ const SDK = {
             getAttEvents: (cb) => {
                 SDK.request({
                     method: "GET",
-                    url: "/students/" + SDK.Storage.load("getCurrentStudent").idStudent + "/events",
+                    url: "/students/" + SDK.Storage.load("student").idStudent + "/events",
                     headers: {
                         filter: {
                             include: ["events"]
