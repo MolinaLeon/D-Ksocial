@@ -50,7 +50,7 @@ $(document).ready(() => {
                     console.log(err.message);
                     alert("Kunne ikke deltage i begivenhed");
                 } else {
-                    window.location.href = "myEvents.html";
+                    window.location.href = "myAttEvents.html";
                 }
         });
     });

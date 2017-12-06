@@ -2,12 +2,13 @@ $(document).ready(() => {
 
     $("#updateButton").click(() => {
 
-       const eventName = $("#updateEventName").val();
-       const location = $("#updateEventLocation").val();
-       const eventDate = $("#updateEventName").val();
-       const price = $("#updateEventName").val();
-       const description = $("#updateEventDescription");
-       const idEvent = SDK.Event.Url.getParameterByName("eventId");
+        //Needs bindestreg to avoid "Duplicated jQuery selector" - duplicated selectors could be cached
+       const eventName = $("#update-event-name").val();
+       const location = $("#update-event-location").val();
+       const eventDate = $("#update-event-name").val();
+       const price = $("#update-event-name").val();
+       const description = $("#update-event-description");
+       const idEvent = SDK.Url.getParameterByName("eventId");
 
        SDK.Event.updateEvent(idEvent, eventName, location, eventDate, price, description, (err, cb) => {
            console.log(eventName);

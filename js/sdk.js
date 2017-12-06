@@ -104,8 +104,7 @@ const SDK = {
             <li><a href="events.html">Alle begivenheder</a></li>
             <li><a href="myEvents.html">Mine begivenheder</a></li>
             <li><a href="createEvent.html">Opret begivenhed</a></li>
-            <li><a href="attStudents.html">Deltagere</a></li>
-            <li><a href="updateEvent.html">Opdater begivenhed</a></li>
+            <li><a href="myAttEvents.html">Deltagende</a></li>
             <li><a href="#" id="logout-link">Logout</a></li>
           `);
                 } else {
@@ -145,7 +144,7 @@ const SDK = {
                 }, (err, data) => {
                     if (err) return cb(err);
                     cb(null, data);
-            });
+                });
             },
 
             joinEvent: (idEvent, eventName, location, price, eventDate, description, cb) => {
@@ -160,8 +159,8 @@ const SDK = {
                     method: "POST",
                     url: "/events/join",
                     authorization: SDK.Storage.load("token"),
-                },(err, data) => {
-                    if(err)
+                }, (err, data) => {
+                    if (err)
                         return cb(err);
                     cb(null, data);
                 });
@@ -171,9 +170,21 @@ const SDK = {
                 SDK.request({
                     method: "GET",
                     url: "/events/" + idEvent + "/students",
-                    headers:{
+                    headers: {
                         Authorization: SDK.Storage.load("token")
                     },
+                }, cb);
+            },
+
+            getAttEvents: (cb) => {
+                SDK.request({
+                    method: "GET",
+                    url: "/students/" + SDK.Storage.load("getCurrentStudent").idStudent + "/events",
+                    headers: {
+                        filter: {
+                            include: ["events"]
+                        }
+                    }
                 }, cb);
             },
 
@@ -188,17 +199,17 @@ const SDK = {
                         description: regEventDescription,
                         eventDate: regEventDate,
                     },
-                    headers:{
+                    headers: {
                         Authorization: SDK.Storage.load("token")
-                            }
-                    }, cb);
+                    }
+                }, cb);
             },
 
             myEvents: (cb) => {
                 SDK.request({
                     method: "GET",
                     url: "/events/myEvents",
-                    headers:{
+                    headers: {
                         Authorization: SDK.Storage.load("token")
                     },
 
@@ -215,24 +226,15 @@ const SDK = {
                         eventDate: eventDate,
                         price: price,
                         description: description,
-                        }
-                    }, (err, data) =>{
-                        if (err)
-                            return cb(err);
+                    }
+                }, (err, data) => {
+                    if (err)
+                        return cb(err);
 
-                        SDK.Storage.persist("crypted", data);
-                        cb(null, data);
+                    SDK.Storage.persist("crypted", data);
+                    cb(null, data);
                 });
             },
-            //Metode lånt fra https://github.com/Ibenfoldager/STFUClient/commit/98e93ad94c02d4980cf0e9512677d1e470565efc
-            // for at få updateEvent til at virke
-            Url: {
-                getParameterByName: (name) => {
-                    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-                    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-                }
-            },
-
 
             deleteEvent: (idEvent, eventName, location, price, eventDate, description, cb) => {
                 SDK.request({
@@ -250,6 +252,15 @@ const SDK = {
             }
         },
 
+    //Metode lånt fra https://github.com/Ibenfoldager/STFUClient/commit/98e93ad94c02d4980cf0e9512677d1e470565efc
+    // for at få updateEvent til at virke
+    Url: {
+        getParameterByName: (name) => {
+            var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+            return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        }
+    },
+
     Encryption: {
         encrypt: (encrypt) => {
             if (encrypt !== undefined && encrypt.length !== 0){
@@ -262,7 +273,7 @@ const SDK = {
             } else {
                 return encrypt;
             }
-        } ,
+        },
 
         decrypt:(decrypt) => {
             if (decrypt.length > 0 && decrypt !== undefined) {
