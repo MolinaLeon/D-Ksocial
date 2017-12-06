@@ -1,14 +1,16 @@
 $(document).ready(() => {
 
     $("#updateButton").click(() => {
-        const idEvent = SDK.Url.getParameterByName("eventId");
+
        const eventName = $("#updateEventName").val();
        const location = $("#updateEventLocation").val();
        const eventDate = $("#updateEventName").val();
        const price = $("#updateEventName").val();
        const description = $("#updateEventDescription");
+       const idEvent = SDK.Event.Url.getParameterByName("eventId");
 
        SDK.Event.updateEvent(idEvent, eventName, location, eventDate, price, description, (err, cb) => {
+           console.log(eventName);
            if(err && err.xhr.status === 401) {
                $(".form-group").addClass("Error - 401");
            }
