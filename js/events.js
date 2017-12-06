@@ -58,9 +58,10 @@ $(document).ready(() => {
             var idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
-                    students = JSON.parse(students);
-
+                    //students = JSON.parse(students);
                     students.forEach((student) => {
+
+                        console.log(student.firstName);
 
                         const attStudentsHtml = `
                         <table class="table">
@@ -71,12 +72,13 @@ $(document).ready(() => {
                             
                         <tbody>
                             <tr>       
-                            <td>${student.firstName} ${student.lastName}</td>
+                            <td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
                             </tr>
                         </tbody>
                         </table>
                          `;
-                        $("#attList").append(attStudentsHtml)
+                        $attList.append(attStudentsHtml)
                     });
                 } else {
                 $("#attButton").html("Fejl, prøv igen");

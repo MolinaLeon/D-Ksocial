@@ -5,6 +5,8 @@ $(document).ready(() => {
     const $updateButton = $("#updateButton");
     $emptyEvents.hide();
 
+
+    //Gets the events where you're the owner
     SDK.Event.myEvents((err, events) => {
         events = JSON.parse(events);
 
@@ -44,7 +46,7 @@ $(document).ready(() => {
         </tbody>
     </table>
 </div> `;
-            $("#myEvents").append(myEventsHtml);
+            $myEvents.append(myEventsHtml);
         });
 
         $(".deleteButton").click(function () {

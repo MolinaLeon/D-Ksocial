@@ -100,7 +100,7 @@ const SDK = {
                         return cb(err);
                     }
                     SDK.Storage.persist("Student", data);
-                    cb(null, data);
+                    if(cb) cb(null, data);
                 });
         },
 
@@ -180,6 +180,9 @@ const SDK = {
                 SDK.request({
                     method: "GET",
                     url: "/events/" + idEvent + "/students",
+                    headers:{
+                        Authorization: SDK.Storage.load("token")
+                    },
                 }, cb);
             },
 
@@ -206,10 +209,40 @@ const SDK = {
                     url: "/events/myEvents",
                     headers:{
                         Authorization: SDK.Storage.load("token")
-                    }
+                    },
 
                 }, cb)
             },
+
+            updateEvent: (idEvent, eventName, location, eventDate, price, description, cb) => {
+                SDK.request({
+                    method: "PUT",
+                    url: "/events/" + idEvent + "/update-event",
+                    data: {
+                        eventName: eventName,
+                        location: location,
+                        eventDate: eventDate,
+                        price: price,
+                        description: description,
+                        }
+                    }, (err, data) =>{
+                        if (err)
+                            return cb(err);
+
+                        SDK.Storage.persist("crypted", data);
+                        cb(null, data);
+                });
+            },
+            //Metode lånt fra https://github.com/Ibenfoldager/STFUClient/commit/98e93ad94c02d4980cf0e9512677d1e470565efc
+            // for at få updateEvent til at virke
+            Url: {
+                getParameterByName: (name) => {
+                    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+                    return match && decodeURIComponent(match[1].replace(/\+/g,' '));
+                }
+
+            },
+
 
             deleteEvent: (idEvent, eventName, location, price, eventDate, description, cb) => {
                 SDK.request({
