@@ -1,13 +1,12 @@
 $(document).ready(() => {
 
+    const currentStudent = SDK.Student.currentStudent();
     const $eventList = $("#event-list");
-    const $attButton = $("#attButton");
-    let $attList = $("#attList");
 
-    SDK.Event.getEvents((err, data) => {
-        data = JSON.parse(data);
+    SDK.Event.getEvents((cb, Event) => {
+        Event = JSON.parse(Event);
 
-        data.forEach((event) => {
+        Event.forEach((event) => {
 
             let eventHtml = `
 <div class="container">
@@ -40,10 +39,10 @@ $(document).ready(() => {
 
         $(".joinEventButton").click(function() {
             const idEvent = $(this).data("event-id");
-            const event = data.find((event) => event.idEvent === idEvent);
+            const event = Event.find((event) => event.idEvent === idEvent);
             console.log(idEvent);
             SDK.Event.joinEvent(idEvent, event.eventName, event.location, event.price, event.eventDate, event.description, (err, data) => {
-                if (err && err.xhr.status === 401) {
+                if (err && xhr.status === 401) {
                     $(".form-group").addClass("Error - 401");
                 }
                 else if (err) {
@@ -55,10 +54,10 @@ $(document).ready(() => {
         });
     });
         $(".attButton").click(function () {
-            var idEvent = $(this).data("event-id");
+            const idEvent = $(this).data("event-id");
             SDK.Event.getAttStudents(idEvent, (cb, students) => {
                 if (students) {
-                    //students = JSON.parse(students);
+                    students = JSON.parse(students);
                     students.forEach((student) => {
 
                         console.log(student.firstName);
@@ -78,7 +77,7 @@ $(document).ready(() => {
                         </tbody>
                         </table>
                          `;
-                        $attList.append(attStudentsHtml)
+                        $("#attListContent").append(attStudentsHtml)
                     });
                 } else {
                 $("#attButton").html("Fejl, prøv igen");
@@ -89,6 +88,7 @@ $(document).ready(() => {
 
         });
 $("#closeModal").click(function () {
+    $("#attListContent").children("table").remove();
     $("#attButton").html("");
 });
 });
