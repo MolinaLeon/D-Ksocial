@@ -6,9 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d671a7d2-19bb-403c-b505-fdf73cc5482c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events.html" afterPath="$PROJECT_DIR$/events.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/events.js" afterPath="$PROJECT_DIR$/js/events.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sdk.js" afterPath="$PROJECT_DIR$/js/sdk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/updateEvent.js" afterPath="$PROJECT_DIR$/js/updateEvent.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,12 +21,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sdk.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sdk.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/sdk.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="108" column="3" lean-forward="false" selection-start-line="108" selection-start-column="3" selection-end-line="108" selection-end-column="3" />
+            <state relative-caret-position="375">
+              <caret line="106" column="53" lean-forward="false" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myAttEvents.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myAttEvents.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myAttEvents.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/myAttEvents.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+              <folding>
+                <marker date="1512599574000" expanded="true" signature="437:1371" ph="..." />
+                <marker date="1512599574000" expanded="true" signature="483:1344" ph="..." />
+                <marker date="1512599574000" expanded="true" signature="516:865" ph="..." />
+                <marker date="1512599574000" expanded="true" signature="930:1311" ph="..." />
+                <marker date="1512599574000" expanded="true" signature="963:1274" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateEvent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/updateEvent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,15 +127,15 @@
         <option value="$PROJECT_DIR$/myEvents.html" />
         <option value="$PROJECT_DIR$/js/myEvents.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/updateEvent.js" />
         <option value="$PROJECT_DIR$/updateEvent.html" />
         <option value="$PROJECT_DIR$/js/myAttEvents.js" />
         <option value="$PROJECT_DIR$/myAttEvents.html" />
-        <option value="$PROJECT_DIR$/js/sdk.js" />
         <option value="$PROJECT_DIR$/firstPage.html" />
         <option value="$PROJECT_DIR$/js/firstPage.js" />
         <option value="$PROJECT_DIR$/events.html" />
         <option value="$PROJECT_DIR$/js/events.js" />
+        <option value="$PROJECT_DIR$/js/updateEvent.js" />
+        <option value="$PROJECT_DIR$/js/sdk.js" />
       </list>
     </option>
   </component>
@@ -221,12 +258,12 @@
       <updated>1509630296070</updated>
       <workItem from="1509630297457" duration="32322000" />
       <workItem from="1511814582759" duration="61326000" />
-      <workItem from="1513621303350" duration="1853000" />
+      <workItem from="1513621303350" duration="2450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95501000" />
+    <option name="totallyTimeSpent" value="96098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="642" y="0" width="638" height="800" extended-state="0" />
@@ -524,49 +561,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/myAttEvents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding>
-            <marker date="1512599574000" expanded="true" signature="437:1371" ph="..." />
-            <marker date="1512599574000" expanded="true" signature="483:1344" ph="..." />
-            <marker date="1512599574000" expanded="true" signature="516:865" ph="..." />
-            <marker date="1512599574000" expanded="true" signature="930:1311" ph="..." />
-            <marker date="1512599574000" expanded="true" signature="963:1274" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateEvent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="94" lean-forward="true" selection-start-line="27" selection-start-column="94" selection-end-line="27" selection-end-column="94" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/updateEvent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="103" lean-forward="false" selection-start-line="4" selection-start-column="103" selection-end-line="4" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/firstPage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myAttEvents.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -604,11 +602,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/updateEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/updateEvent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="64" lean-forward="false" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/sdk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="108" column="3" lean-forward="false" selection-start-line="108" selection-start-column="3" selection-end-line="108" selection-end-column="3" />
+        <state relative-caret-position="375">
+          <caret line="106" column="53" lean-forward="false" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myAttEvents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/myAttEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <marker date="1512599574000" expanded="true" signature="437:1371" ph="..." />
+            <marker date="1512599574000" expanded="true" signature="483:1344" ph="..." />
+            <marker date="1512599574000" expanded="true" signature="516:865" ph="..." />
+            <marker date="1512599574000" expanded="true" signature="930:1311" ph="..." />
+            <marker date="1512599574000" expanded="true" signature="963:1274" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

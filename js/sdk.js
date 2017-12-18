@@ -104,7 +104,7 @@ const SDK = {
             <li><a href="events.html">Alle begivenheder</a></li>
             <li><a href="myEvents.html">Mine begivenheder</a></li>
             <li><a href="createEvent.html">Opret begivenhed</a></li>
-            <li><a href="myAttEvents.html">Deltagende</a></li>
+            <li><a href="myAttEvents.html">Deltager i</a></li>
             <li><a href="#" id="logout-link">Logout</a></li>
           `);
                 } else {

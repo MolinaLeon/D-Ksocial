@@ -5,9 +5,9 @@ $(document).ready(() => {
         //Needs bindestreg to avoid "Duplicated jQuery selector" - duplicated selectors could be cached
        const eventName = $("#update-event-name").val();
        const location = $("#update-event-location").val();
-       const eventDate = $("#update-event-name").val();
-       const price = $("#update-event-name").val();
-       const description = $("#update-event-description");
+       const eventDate = $("#update-event-date").val();
+       const price = $("#update-event-price").val();
+       const description = $("#update-event-description").val();
        const idEvent = SDK.Url.getParameterByName("eventId");
 
        SDK.Event.updateEvent(idEvent, eventName, location, eventDate, price, description, (err, cb) => {
@@ -17,7 +17,6 @@ $(document).ready(() => {
            }
            else if (err) {
                alert("Fejl, prøv igen");
-               console.log(err.message);
            } else {
                alert("Din begivenhed blev opdateret");
                window.location.href = "myEvents.html";
