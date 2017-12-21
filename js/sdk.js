@@ -179,7 +179,7 @@ const SDK = {
             getAttEvents: (cb) => {
                 SDK.request({
                     method: "GET",
-                    url: "/students/" + SDK.Storage.load("student").idStudent + "/events",
+                    url: "/students/" + SDK.Storage.load("Student").idStudent + "/events",
                     headers: {
                         filter: {
                             include: ["events"]
@@ -253,7 +253,7 @@ const SDK = {
         },
 
     //Metode lånt fra https://github.com/Ibenfoldager/STFUClient/commit/98e93ad94c02d4980cf0e9512677d1e470565efc
-    // for at få updateEvent til at virke
+    //for at få updateEvent til at virke
     Url: {
         getParameterByName: (name) => {
             var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);

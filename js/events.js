@@ -49,6 +49,7 @@ $(document).ready(() => {
                     console.log(err.message);
                     alert("Kunne ikke deltage i begivenhed");
                 } else {
+                    window.alert("Du deltagere nu i " + event.eventName);
                     window.location.href = "myAttEvents.html";
                 }
         });

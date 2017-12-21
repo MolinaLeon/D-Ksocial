@@ -1,18 +1,12 @@
 $(document).ready(() => {
 
-    const $attEvents = $("att-events");
-    const $noAttEvents = $("no-att-events");
+    const $attEvents = $("#att-events");
 
-    $noAttEvents.hide();
-
-    SDK.Student.getAttEvents((cb, events) => {
+    SDK.Event.getAttEvents((cb, events) => {
         events = JSON.parse(events);
 
-            if (events.length === 0) {
-                $noAttEvents.show();
-            }
-
             events.forEach((event) => {
+                console.log(event);
 
                 const attEventHtml = `
                     <div class="container">
@@ -23,8 +17,6 @@ $(document).ready(() => {
                             <th>Pris</th>
                             <th>Dato</th>
                             <th>Beskrivelse</th>
-                            <th>Deltag</th>
-                            <th>Se deltagere</th>
                             </tr>
                             
                             <tbody>
