@@ -1,3 +1,7 @@
+//Udviklet med udgangspunkt i Jesper Bruun Hansens repo: https://github.com/Distribuerede-Systemer-2017/javascript-client/
+//Branch: Master, exercise & solution
+//og hjælp fra Laust Færge
+
 $(document).ready(() => {
 
     $("#login-button").click(() => {

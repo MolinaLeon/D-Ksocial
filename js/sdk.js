@@ -1,3 +1,7 @@
+//Udviklet med udgangspunkt i Jesper Bruun Hansens repo: https://github.com/Distribuerede-Systemer-2017/javascript-client/
+//Branch: Master, exercise & solution
+//og hjælp fra Laust Færge
+
 const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, cb) => {
